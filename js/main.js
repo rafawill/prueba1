@@ -14,7 +14,7 @@ require([
 function($, _, Backbone, HeaderView, StartView, WineView, WineListView, tpl, Wine, WineCollection) {
 
     Backbone.View.prototype.close = function() {
-        console.log('Closing view ' + this);
+        
         if (this.beforeClose) {
             this.beforeClose();
         }
@@ -43,6 +43,8 @@ function($, _, Backbone, HeaderView, StartView, WineView, WineListView, tpl, Win
         wineDetails: function(id) {
             this.before(function() {
                 var wine = this.wineList.get(id);
+                
+                wine.set({name: 'test'})
                 this.showView('#content', new WineView({
                     model: wine
                 }));
@@ -67,6 +69,7 @@ function($, _, Backbone, HeaderView, StartView, WineView, WineListView, tpl, Win
         },
 
         before: function(callback) {
+            console.log(this.winelist)
             if (this.wineList) {
                 if (callback) callback.call(this);
             } else {
@@ -75,9 +78,12 @@ function($, _, Backbone, HeaderView, StartView, WineView, WineListView, tpl, Win
                 this.wineList.fetch({
                     success: function() {
                         var winelist = new WineListView({
-                            model: self.wineList
+
+                            collection: self.wineList
                         }).render();
+
                         $('#sidebar').html(winelist);
+
                         if (callback) callback.call(self);
                     }
                 });

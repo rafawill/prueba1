@@ -6,7 +6,7 @@ function($, _, Backbone) {
     var Wine = Backbone.Model.extend({
         urlRoot: "wines/index.php/",
         defaults: {
-            "id": null,
+             "id": null,
             "name": "",
             "grapes": "",
             "country": "USA",
