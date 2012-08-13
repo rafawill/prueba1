@@ -87,7 +87,7 @@ function($, _, Backbone, HeaderView, StartView, WineView, WineListView, tpl, Win
     });
 
     tpl.loadTemplates(['header', 'wine-details', 'wine-list-item', 'start'], function() {
-        var app = new AppRouter();
+        window.app = new AppRouter();
         Backbone.history.start();
     });
 
