@@ -44,7 +44,7 @@ function($, _, Backbone, HeaderView, StartView, WineView, WineListView, tpl, Win
             this.before(function() {
                 var wine = this.wineList.get(id);
                 
-                wine.set({name: 'test'})
+                
                 this.showView('#content', new WineView({
                     model: wine
                 }));
